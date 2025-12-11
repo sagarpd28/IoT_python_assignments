@@ -3,13 +3,13 @@ import csv
 from PIL import Image
 import matplotlib.pyplot as plt
 
-# 1. Folder path
-folder_path = "/var/images"
+# Folder path
+folder_path = "D:\images"
 
 # List to store image info
 image_info = []
 
-# 2. Read all .jpg and .png files
+# Read all .jpg and .png files
 for filename in os.listdir(folder_path):
     if filename.lower().endswith(('.jpg', '.jpeg', '.png')):
         img_path = os.path.join(folder_path, filename)
@@ -36,14 +36,14 @@ for filename in os.listdir(folder_path):
             "area": width * height
         })
 
-# 4. Determine largest & smallest images by area
+# Determine largest & smallest images by area
 largest_image = max(image_info, key=lambda x: x['area'])
 smallest_image = min(image_info, key=lambda x: x['area'])
 
 print("Largest Image:", largest_image)
 print("Smallest Image:", smallest_image)
 
-# 5. Save into a CSV file
+# Save into a CSV file
 csv_path = "image_sizes.csv"
 
 with open(csv_path, "w", newline="") as csvfile:
